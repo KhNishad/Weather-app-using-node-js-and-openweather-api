@@ -15,3 +15,6 @@ if you want to run this in your computer do this:
 it will download all the dependences it need.
 then hit:http://localhost:3000/
 app will be running....
+
+
+App is live here : https://kh-nishad.herokuapp.com/weather2/Khulna
