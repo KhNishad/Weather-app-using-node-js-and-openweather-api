@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Your <%=data.city%> has <%=data.des%></title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
+</head>
+
+<body>
+    <section class="hero is-info">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                Want to know about city weather ? Just Search here !
+                </h1>
+            </div>
+        </div>
+    </section>
+    <section class="section"></section>
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    <form action="/weather" method="POST" >
+                        <div class="field has-addons">
+                            <div class="control is-expanded">
+                                <input class="input" name="city2" id="city2" type="text" placeholder="City Name">
+                            </div>
+                            <div class="control">
+                               
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                  
+                    <div class="box">
+                        <article class="media">
+                            <div class="media-left">
+                                <figure class="image is-50x50">
+                                    <img src="http://openweathermap.org/img/w/<%=data.icon %>.png" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <span class="title"><%= data.city %></span>
+                                        <br>
+                                        <span class="subtitle">Temperature: <%= data.temp%>° F</span>
+                                        <br>
+                                        <span class="subtitle">Humidity: <%= data.humi%>° F</span>
+                                        <br> <%= data.des %>
+                                        
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </section>
+<footer class="footer">
+    <p>&copy;
+        <script>document.write(new Date().getFullYear())</script> Kh Nishad</p>
+</footer>
+</body>
+
+</html>
