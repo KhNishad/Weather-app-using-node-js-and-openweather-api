@@ -57,7 +57,7 @@ app.get('/weather2/:city', function (req, res) {
         {
                 
             var data = {
-                city: city,
+                city: weather_json.name,
                 temp: Math.round(weather_json.main.temp),
                 icon: weather_json.weather[0].icon,
                 des: weather_json.weather[0].description,
