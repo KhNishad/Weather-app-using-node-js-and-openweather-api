@@ -18,6 +18,8 @@
                 <h1 class="title">
                 Want to know about city weather ? Just Search here !
                 </h1>
+                <p><%=data.country%></p>
+                <p><%=data.date%></p>
             </div>
         </div>
     </section>
@@ -43,6 +45,7 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-offset-4 is-4">
+                   
 
                     <div class="box">
                         <article class="media">
@@ -51,23 +54,33 @@
                                     <img src="http://openweathermap.org/img/w/<%=data.icon %>.png" alt="Image">
                                 </figure>
                             </div>
-                            <div class="media-content">
+                            <div class="media-content ">
                                 
                                 <div class="content">
                                     <p>
                                         <span class="title"><%= data.city %></span>
                                         <br>
+                                        <br>
                                         <span class="subtitle">Temperature: <%= data.temp%>° F</span>
                                         <br>
-                                        <span class="subtitle">Humidity: <%= data.humi%>° F</span>
-                                        <br> <%= data.des %>
+                                        <span class="subtitle">Temp Max: <%= data.temp_max%>° F</span>
+                                        <br>
+                                        <span class="subtitle">Humidity: <%= data.humi%></span>
+                                        <br>
+
+                                        <span class="subtitle">Wind Speed: <%= data.wind%> mph</span>
+                                        <br>
+                                        <span class="subtitle">Pressure: <%= data.pressure%></span>
+                                        <br>
+                                        
+                                        <br>Sky: <%= data.des %>
 
                                     </p>
                                 </div>
                             </div>
                         </article>
                     </div>
-
+                   
                 </div>
             </div>
         </div>

@@ -15,16 +15,23 @@ app.get('/',function (req,res) {
 
     request(url , function (error , respone , body) {
      var  weather_json =   JSON.parse(body);
+        var datetime = new Date().toDateString();
+
     // console.log(weather_json);
 
-     var data = {
-         city: city ,
-         temp: Math.round(weather_json.main.temp) ,
-         icon: weather_json.weather[0].icon,
-         des : weather_json.weather[0].description,
-         humi: weather_json.main.humidity,
+        var data = {
+            city: city,
+            temp: Math.round(weather_json.main.temp),
+            icon: weather_json.weather[0].icon,
+            des: weather_json.weather[0].description,
+            humi: weather_json.main.humidity,
+            country: weather_json.sys.country,
+            wind: weather_json.wind.speed,
+            temp_max: weather_json.main.temp_max,
+            pressure: weather_json.main.pressure,
+            date: datetime
 
-     }
+        }
         var data = { data: data }
         res.render('weather.ejs', data);
     });
@@ -43,17 +50,23 @@ app.get('/weather2/:city', function (req, res) {
 
     request(url, function (error, respone, body) {
         var weather_json = JSON.parse(body);
-       // console.log(weather_json.message);
+        console.log(weather_json);
+        var datetime = new Date().toDateString();
         
         if (!weather_json.message)
         {
-
+                
             var data = {
                 city: city,
                 temp: Math.round(weather_json.main.temp),
                 icon: weather_json.weather[0].icon,
                 des: weather_json.weather[0].description,
                 humi: weather_json.main.humidity,
+                country : weather_json.sys.country,
+                wind: weather_json.wind.speed,
+                temp_max: weather_json.main.temp_max,
+                pressure: weather_json.main.pressure,
+                date: datetime
 
             }
             var data = { data: data }
