@@ -17,4 +17,4 @@ then hit:http://localhost:3000/
 app will be running....
 
 
-App is live here : https://kh-nishad.herokuapp.com/weather2/Khulna
+App is live here : https://kh-nishad.herokuapp.com/
