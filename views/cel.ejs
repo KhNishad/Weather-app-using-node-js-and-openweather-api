@@ -8,7 +8,7 @@
     <title>Your <%=data.city%> has <%=data.des%></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    
+
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
@@ -18,24 +18,30 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-    
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
+
     <style>
-       
-        #city {
-            display: none;
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+            margin-left: 1400px;
         }
-        .clock{
+         #city{
+        display: none;
+       }
+       .clock{
            margin-left: 400px;
         }
     </style>
 </head>
 
 <body>
-    <section class="hero is-info">
-        
+    <section class="hero is-success">
         <div class="hero-body">
-            
             <div class="container">
                 <div class="row">
                     <div class="col-md-8">
@@ -50,38 +56,37 @@
                             <div class="field has-addons">
                                 <div class="control is-expanded">
                                     <input class="input" name="city" id="city" type="text" value="<%=data.city%>">
-                                    <button type="submit" class="btn btn-primary">Celsius</button>
+                                    <button type="submit" class="btn btn-success">Fahrenheit</button>
                                 </div>
-                        
+            
                             </div>
                         </form>
                     </div>
-                
-                 <div class="col-md-4">
-                    <div class="clock">
-                        <iframe
-                            src="http://free.timeanddate.com/clock/i78qxluq/n73/szw110/szh110/hoc000/hbw0/hfc09f/cf100/hnc07c/hwc000/facfff/fnu2/fdi76/mqcfff/mqs4/mql18/mqw4/mqd60/mhcfff/mhs4/mhl5/mhw4/mhd62/mmv0/hhcfff/hhs1/hhb10/hmcfff/hms1/hmb10/hscfff/hsw3"
-                            frameborder="0" width="110" height="110"></iframe>
+            
+                    <div class="col-md-4">
+                        <div class="clock">
+                            <iframe
+                                src="http://free.timeanddate.com/clock/i78qyun2/n73/szw110/szh110/hoc000/hbw0/hfc090/cf100/hnc090/hwc000/facfff/fnu2/fdi76/mqcfff/mqs4/mql18/mqw4/mqd60/mhcfff/mhs4/mhl5/mhw4/mhd62/mmv0/hhcfff/hhs1/hhb10/hmcfff/hms1/hmb10/hscfff/hsw3"
+                                frameborder="0" width="110" height="110"></iframe>
+            
+                        </div>
                     </div>
                 </div>
-            </div>
-               
-               
-               
+
             </div>
         </div>
     </section>
-    <section class="section"></section>
+    <section class="section">
         <div class="container">
             <div class="columns">
                 <div class="column is-offset-4 is-4">
-                    <form action="/weather" method="POST" >
+                    <form action="/weather" method="POST">
                         <div class="field has-addons">
                             <div class="control is-expanded">
                                 <input class="input" name="city2" id="city2" type="text" placeholder="City Name">
                             </div>
                             <div class="control">
-                               
+
                             </div>
                         </div>
                     </form>
@@ -93,7 +98,8 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-offset-4 is-4">
-                  
+
+
                     <div class="box">
                         <article class="media">
                             <div class="media-left">
@@ -101,38 +107,45 @@
                                     <img src="http://openweathermap.org/img/w/<%=data.icon %>.png" alt="Image">
                                 </figure>
                             </div>
-                        <div class="content">
-                            <p>
-                                <span class="title"><%= data.city %></span>
-                                <br>
-                                <br>
-                                <span class="subtitle">Temperature: <%= data.temp%>° F</span>
-                                <br>
-                                 <span class="subtitle">Temp Max: <%= data.temp_max%>° F</span>
-                                <br>
-                                <span class="subtitle">Humidity: <%= data.humi%>%</span>
-                                <br>
-                        
-                                <span class="subtitle">Wind Speed: <%= data.wind%> mph</span>
-                                <br>
-                                <span class="subtitle">Pressure: <%= data.pressure%></span>
-                                <br>
-                                <br> <%= data.des %>
-                        
-                            </p>
-                        </div>
+                            <div class="media-content ">
+
+                                <div class="content">
+                                    <p>
+                                        <span class="title"><%= data.city %></span>
+                                        <br>
+                                        <br>
+                                        <span class="subtitle">Temperature: <%= data.temp%> °C</span>
+                                        <br>
+                                        <span class="subtitle">Temp Max: <%= data.temp_max%> °C</span>
+                                        <br>
+                                        <span class="subtitle">Humidity: <%= data.humi%>%</span>
+                                        <br>
+
+                                        <span class="subtitle">Wind Speed: <%= data.wind%> kph</span>
+                                        <br>
+                                        <span class="subtitle">Pressure: <%= data.pressure%></span>
+                                        <br>
+
+
+
+                                        <i>Sky: <%= data.des %></i>
+
+
+
+                                    </p>
+                                </div>
                             </div>
                         </article>
                     </div>
-                   
+
                 </div>
             </div>
         </div>
     </section>
-<footer class="footer">
-    <p>&copy;
-        <script>document.write(new Date().getFullYear())</script> Kh Nishad</p>
-</footer>
+    <footer class="footer">
+        <p>&copy;
+            <script>document.write(new Date().getFullYear())</script> Kh Nishad</p>
+    </footer>
 </body>
 
 </html>
