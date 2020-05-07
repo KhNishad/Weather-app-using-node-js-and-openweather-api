@@ -5,11 +5,12 @@ var request  = require('request');
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}))
 
+// default city
 var city = 'Dhaka';
 app.use(bodyParser.json());
 
 
-
+// rendering home page 
 
 app.get('/',function (req,res) {
     var url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=76c8fdc8db07e476c13e988cb7a5690d`;
@@ -39,16 +40,22 @@ app.get('/',function (req,res) {
    
 });
 
+// post request from search input from weather.ejs 
 
 app.post('/weather', (req,res)=>{
-    var city  = req.body.city2
+    var city  = req.body.city2;
     res.redirect('/weather2/'+city);
 })
 
+
+// post request from the celsius page 
 app.post('/weather2', (req,res)=>{ 
     var city = req.body.city;
     res.redirect('/weather2/'+ city);
 })
+
+
+// finding data of the searched 
 
 app.get('/weather2/:city', function (req, res) {
     var city  = req.params.city;
@@ -80,7 +87,7 @@ app.get('/weather2/:city', function (req, res) {
 
             }
             var data = { data: data }
-            res.render('weather2.ejs', data);
+            res.render('weather.ejs', data);
         }else{
             res.send('City not found');
         }
@@ -90,6 +97,7 @@ app.get('/weather2/:city', function (req, res) {
 
 });
 
+// taking city name to convert into celsius
 
 app.post('/cel', function (req, res) {
      var city = req.body.city;
@@ -98,7 +106,7 @@ app.post('/cel', function (req, res) {
      
 });
 
-
+// converting to celsius
 app.get('/cel/:city', function (req, res) {
     var city = req.params.city;
     //console.log(city);
@@ -143,6 +151,6 @@ app.get('/cel/:city', function (req, res) {
 });
 
 
-
+// port to run 
 app.listen(process.env.PORT || 3000);
 
