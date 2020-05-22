@@ -10,7 +10,7 @@ if you want to run this in your computer do this:
 
 #open in your editor.
 
-#run command >> npm installed
+#run command >> npm install
 
 it will download all the dependences it need.
 then hit:http://localhost:3000/
