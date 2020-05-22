@@ -35,6 +35,7 @@
 </head>
 
 <body>
+    
     <section class="hero is-info">
         
         <div class="hero-body">
@@ -43,21 +44,42 @@
                 <div class="row">
                     <div class="col-md-8 col-sm-12">
                         <h1 class="title">
-                            Want to know about city weather ? Just Search here !
+                            Want to know about city weather ? Just Search here!
                         </h1>
                         <p><%=data.country%></p>
                         <p><%=data.city%></p>
                         <p><%=data.date%></p>
                         <br>
-                        <form action="/cel" method="POST">
-                            <div class="field has-addons">
-                                <div class="control is-expanded">
-                                    <input class="input" name="city" id="city" type="text" value="<%=data.city%>">
-                                    <button type="submit" class="btn btn-primary">Celsius</button>
+
+                    
+                        <%if(data.cel){%>
+                            <form action="/weather2" method="POST">
+                                <div class="field has-addons">
+                                    <div class="control is-expanded">
+                                        <input class="input" name="city" id="city" type="text" value="<%=data.city%>">
+                                        <button type="submit" class="btn btn-success">Fahrenheit</button>
+                                    </div>
+                            
                                 </div>
+                            </form>
+                            <%}%>
+                                
+                                
+                                <%if(!data.cel){%>
+                                  
+                                <form action="/cel" method="POST">
+                                    <div class="field has-addons">
+                                        <div class="control is-expanded">
+                                            <input class="input" name="city" id="city" type="text" value="<%=data.city%>">
+                                            <button type="submit" class="btn btn-primary">Celsius</button>
+                                        </div>
+                                
+                                    </div>
+                                </form>
+                                <% }%>
+                              
+                          
                         
-                            </div>
-                        </form>
                     </div>
                 
             </div>
@@ -75,6 +97,11 @@
                         <div class="field has-addons">
                             <div class="control is-expanded">
                                 <input class="input" name="city2" id="city2" type="text" placeholder="City Name">
+                                <br>
+                                <% if(data == "city not found"){ %>
+                                  
+                                    <i class="text-danger">City Not Found</i>
+                              <%  } %> 
                             </div>
                             <div class="control">
                                
@@ -97,6 +124,7 @@
                                     <img src="http://openweathermap.org/img/w/<%=data.icon %>.png" alt="Image">
                                 </figure>
                             </div>
+                            <%if(!data.cel){%>
                         <div class="content">
                             <p>
                                 <span class="title"><%= data.city %></span>
@@ -113,10 +141,39 @@
                                 <br>
                                 <span class="subtitle">Pressure: <%= data.pressure%></span>
                                 <br>
-                                <br> <%= data.des %>
+                             
+                                <i>Sky: <%= data.des %></i> 
                         
                             </p>
                         </div>
+                        <%}%>
+                        <%if(data.cel){%>
+                        <div class="content">
+                            <p>
+                                <span class="title"><%= data.city %></span>
+                                <br>
+                                <br>
+                                <span class="subtitle">Temperature: <%= data.temp%> °C</span>
+                                <br>
+                                <span class="subtitle">Temp Max: <%= data.temp_max%> °C</span>
+                                <br>
+                                <span class="subtitle">Humidity: <%= data.humi%>%</span>
+                                <br>
+                        
+                                <span class="subtitle">Wind Speed: <%= data.wind%> kph</span>
+                                <br>
+                                <span class="subtitle">Pressure: <%= data.pressure%></span>
+                                <br>
+                        
+                        
+                        
+                                <i>Sky: <%= data.des %></i>
+                        
+                        
+                        
+                            </p>
+                        </div>
+                       <% }%>
                             </div>
                         </article>
                     </div>

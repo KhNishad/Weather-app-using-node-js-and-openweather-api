@@ -66,12 +66,13 @@ app.get('/weather2/:city', function (req, res) {
     request(url, function (error, respone, body) {
         var weather_json = JSON.parse(body);
         //console.log(weather_json);
-        var datetime = new Date().toDateString();
-        var cel = ((Math.round(weather_json.main.temp)- 32) * 5)/9;
+        
         
         
         if (!weather_json.message)
         {
+            var datetime = new Date().toDateString();
+            var cel = ((Math.round(weather_json.main.temp) - 32) * 5) / 9;
                 
             var data = {
                 city: weather_json.name,
@@ -89,7 +90,8 @@ app.get('/weather2/:city', function (req, res) {
             var data = { data: data }
             res.render('weather.ejs', data);
         }else{
-            res.send('City not found');
+            
+            res.render('weather.ejs', { data : "city not found" });
         }
 
 
@@ -116,15 +118,16 @@ app.get('/cel/:city', function (req, res) {
     request(url, function (error, respone, body) {
         var weather_json = JSON.parse(body);
         //console.log(weather_json);
-        var datetime = new Date().toDateString();
-        var cel = ((Math.round(weather_json.main.temp) - 32) * 5) / 9;
-        var max = ((Math.round(weather_json.main.temp_max) - 32) * 5) / 9;
-        var km = ((weather_json.wind.speed)*1.6093440)
-      var kmp =  km.toFixed(3);
+        
 
 
 
         if (!weather_json.message) {
+            var datetime = new Date().toDateString();
+            var cel = ((Math.round(weather_json.main.temp) - 32) * 5) / 9;
+            var max = ((Math.round(weather_json.main.temp_max) - 32) * 5) / 9;
+            var km = ((weather_json.wind.speed) * 1.6093440)
+            var kmp = km.toFixed(3);
 
             var data = {
                 city: weather_json.name,
@@ -136,13 +139,15 @@ app.get('/cel/:city', function (req, res) {
                 wind: kmp,
                 temp_max: Math.round(max),
                 pressure: weather_json.main.pressure,
-                date: datetime
+                date: datetime,
+                cel : "yes"
 
             }
             var data = { data: data }
-            res.render('cel.ejs', data);
+            res.render('weather.ejs', data);
         } else {
-            res.send('City not found');
+            res.render('weather.ejs', { data: "city not found" });
+
         }
 
 
