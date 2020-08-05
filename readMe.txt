@@ -12,7 +12,7 @@ if you want to run this in your computer do this:
 
 #run command >> npm install
 
-it will download all the dependences it need.
+it will download all the dependences it need.Run the project from your IDE
 then hit:http://localhost:3000/
 app will be running....
 
